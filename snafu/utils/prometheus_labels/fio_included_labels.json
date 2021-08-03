@@ -2,31 +2,31 @@
   "data": {
     "Average_Disk_IOPS_Read": {
         "label": "node_disk_reads_completed_total",
-        "query": "(irate(node_disk_reads_completed_total{device!~\"dm.*\",device!~\"rb.*\",device!~\"nbd.*\"}[1m]))"
+        "query": "(rate(node_disk_reads_completed_total{device!~\"dm.*\",device!~\"rb.*\",device!~\"nbd.*\"}[1m]))"
     },
     "Average_Disk_IOPS_Write": {
         "label": "node_disk_writes_completed_total",
-        "query": "(irate(node_disk_writes_completed_total{device!~\"dm.*\",device!~\"rb.*\",device!~\"nbd.*\"}[1m]))"
+        "query": "(rate(node_disk_writes_completed_total{device!~\"dm.*\",device!~\"rb.*\",device!~\"nbd.*\"}[1m]))"
     },
     "Average_Disk_Throughput_Read": {
         "label": "node_disk_read_bytes_total",
-        "query": "(irate(node_disk_read_bytes_total{device!~\"dm.*\",device!~\"rb.*\",device!~\"nbd.*\"}[1m]))"
+        "query": "(rate(node_disk_read_bytes_total{device!~\"dm.*\",device!~\"rb.*\",device!~\"nbd.*\"}[1m]))"
     },
     "Average_Disk_Throughput_Write": {
         "label": "node_disk_written_bytes_total",
-        "query": "(irate(node_disk_written_bytes_total{device!~\"dm.*\",device!~\"rb.*\",device!~\"nbd.*\"}[1m]))"
+        "query": "(rate(node_disk_written_bytes_total{device!~\"dm.*\",device!~\"rb.*\",device!~\"nbd.*\"}[1m]))"
     },
     "Average_Network_Throughput_Rx": {
         "label": "node_network_receive_bytes_total",
-        "query": "(irate(node_network_receive_bytes_total{device!~\"tun.*\",device!~\"vxlan.*\",device!~\"ovs.*\",device!~\"br.*\",device!~\"veth.*\"}[1m]) * 8)"
+        "query": "(rate(node_network_receive_bytes_total{device!~\"tun.*\",device!~\"vxlan.*\",device!~\"ovs.*\",device!~\"br.*\",device!~\"veth.*\"}[1m]) * 8)"
     },
     "Average_Network_Throughput_Tx": {
         "label": "node_network_transmit_bytes_total",
-        "query": "(irate(node_network_transmit_bytes_total{device!~\"tun.*\",device!~\"vxlan.*\",device!~\"ovs.*\",device!~\"br.*\",device!~\"veth.*\"}[1m]) * 8)"
+        "query": "(rate(node_network_transmit_bytes_total{device!~\"tun.*\",device!~\"vxlan.*\",device!~\"ovs.*\",device!~\"br.*\",device!~\"veth.*\"}[1m]) * 8)"
     },
     "Average_CPU_Usage_per_Instance": {
         "label": "node_cpu_seconds_total",
-        "query": "(irate(node_cpu_seconds_total[1m]))"
+        "query": "(rate(node_cpu_seconds_total[1m]))"
     },
     "Average_Memory_Usage_Active": {
         "label": "node_memory_MemTotal_bytes",
@@ -50,11 +50,11 @@
     },
     "Ceph_Per_OSD_Throughput_Read-Modify-Write_in": {
         "label": "ceph_osd_op_rw_in_bytes",
-        "query": "irate(ceph_osd_op_rw_in_bytes[1m])"
+        "query": "rate(ceph_osd_op_rw_in_bytes[1m])"
     },
     "Ceph_Per_OSD_Throughput_Read-Modify-Write_out": {
         "label": "ceph_osd_op_rw_out_bytes",
-        "query": "irate(ceph_osd_op_rw_out_bytes[1m])"
+        "query": "rate(ceph_osd_op_rw_out_bytes[1m])"
     },
     "Ceph_Avg_OSD_Op_Latency_read": {
         "label": "ceph_osd_op_r_latency_sum,ceph_osd_op_r_latency_count",
@@ -70,7 +70,7 @@
     },
     "Ceph-OSD_Containers_CPU_usage": {
         "label": "container_cpu_usage_seconds_total",
-        "query": "(irate(container_cpu_usage_seconds_total[1m]))"
+        "query": "(rate(container_cpu_usage_seconds_total[1m]))"
     },
     "Number_of_PVCs": {
         "label": "kube_persistentvolumeclaim_info",
@@ -142,11 +142,11 @@
     },
     "ceph_througput_write": {
         "label": "ceph_osd_op_w_in_bytes",
-        "query": "sum(irate(ceph_osd_op_w_in_bytes[1m]))"
+        "query": "sum(rate(ceph_osd_op_w_in_bytes[1m]))"
     },
     "ceph_throughput_read": {
         "label": "ceph_osd_op_r_in_bytes",
-        "query": "sum(irate(ceph_osd_op_r_out_bytes[1m]))"
+        "query": "sum(rate(ceph_osd_op_r_out_bytes[1m]))"
     },
     "ceph_Average_OSD_Apply_Latency": {
         "label": "ceph_osd_apply_latency_ms",
@@ -386,19 +386,19 @@
     },
     "ceph_OSD Red-Modify-Write Operation latency (ms)": {
         "label": "ceph_osd_op_rw_latency_sum",
-        "query": "sum(irate(ceph_osd_op_rw_latency_sum{namespace=\"openshift-storage\"}[1m])) by (ceph_daemon)"
+        "query": "sum(rate(ceph_osd_op_rw_latency_sum{namespace=\"openshift-storage\"}[1m])) by (ceph_daemon)"
     },
     "ceph_OSD Read Operations Out (bytes)": {
         "label": "ceph_osd_op_r_out_bytes",
-        "query": "sum(irate(ceph_osd_op_r_out_bytes{namespace=\"openshift-storage\"}[1m])) by (ceph_daemon)"
+        "query": "sum(rate(ceph_osd_op_r_out_bytes{namespace=\"openshift-storage\"}[1m])) by (ceph_daemon)"
     },
     "ceph_OSD Write Operations In (bytes)": {
         "label": "ceph_osd_op_w_in_bytes",
-        "query": "sum(irate(ceph_osd_op_w_in_bytes{namespace=\"openshift-storage\"}[1m])) by (ceph_daemon)"
+        "query": "sum(rate(ceph_osd_op_w_in_bytes{namespace=\"openshift-storage\"}[1m])) by (ceph_daemon)"
     },
     "ceph_Bluefs Slow Used Bytes": {
         "label": "ceph_bluefs_slow_used_bytes",
-        "query": "avg(irate(ceph_bluefs_slow_used_bytes{namespace=\"openshift-storage\"}[10s])) by (ceph_daemon)"
+        "query": "avg(rate(ceph_bluefs_slow_used_bytes{namespace=\"openshift-storage\"}[10s])) by (ceph_daemon)"
     },
     "ceph_Bluefs Read Bytes": {
         "label": "ceph_bluefs_read_bytes",
@@ -414,19 +414,19 @@
     },
     "ceph_Recovery Operations": {
         "label": "ceph_osd_recovery_ops",
-        "query": "sum(irate(ceph_osd_recovery_ops{namespace=\"openshift-storage\"}[1m]))"
+        "query": "sum(rate(ceph_osd_recovery_ops{namespace=\"openshift-storage\"}[1m]))"
     },
     "ceph_bluestore_compressed": {
         "label": "ceph_bluestore_bluestore_compressed",
-        "query": "irate(ceph_bluestore_bluestore_compressed[1m])"
+        "query": "rate(ceph_bluestore_bluestore_compressed[1m])"
     },
     "ceph_bluestore_compressed_allocated": {
         "label": "ceph_bluestore_bluestore_compressed_allocated",
-        "query": "irate(ceph_bluestore_bluestore_compressed_allocated[1m])"
+        "query": "rate(ceph_bluestore_bluestore_compressed_allocated[1m])"
     },
     "ceph_bluestore_compressed_original": {
         "label": "ceph_bluestore_bluestore_compressed_original",
-        "query": "irate(ceph_bluestore_bluestore_compressed_original[1m])"
+        "query": "rate(ceph_bluestore_bluestore_compressed_original[1m])"
     }
   }
 }
