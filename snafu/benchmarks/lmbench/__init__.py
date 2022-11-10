@@ -1,0 +1,1 @@
+from snafu.benchmarks.lmbench.lmbench import LMBench
